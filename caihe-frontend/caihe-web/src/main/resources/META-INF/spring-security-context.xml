@@ -5,7 +5,7 @@
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd"
 	default-autowire="byName">
 	<security:http  entry-point-ref="" auto-config="true" disable-url-rewriting="true" use-expressions="true" access-denied-page="/signin_deny">
-		<!-- 登录过滤�? -->
+		<!-- 登录过滤器 -->
 		<security:form-login 
 			authentication-success-handler-ref="myAuthenticationSuccessHandler" 
 			authentication-failure-url="/signin_fail" 
@@ -17,12 +17,9 @@
         <!-- 此处service配置属于自己自定义的 -->
         <security:remember-me 
         	key="${rememberMeServices.key}" 
-        	services-ref="rememberMeService"/>
-        	<!-- key="${rememberMeServices.key}" 
         	data-source-ref="dataSource"
-        	user-service-ref="userService"
         	token-validity-seconds="${rememberMeServices.token.valid.seconds}"
-        	remember-me-parameter="${rememberMeServices.parameter}"/> -->
+        	remember-me-parameter="${rememberMeServices.parameter}"/> 
         <security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/signin" access="permitAll" />
 		<security:intercept-url pattern="/signin_fail" access="permitAll" />
@@ -33,22 +30,27 @@
     	<security:logout logout-url="/logout" delete-cookies="IMSESSID"/> 
  	</security:http>
  	
-  	<bean id="myAuthenticationSuccessHandler" class="com.ouer.im.filter.MyAuthenticationSuccessHandler">  
+  	<bean id="myAuthenticationSuccessHandler" class="ouer.caihe.maven.security.MyAuthenticationSuccessHandler">  
         <property name="defaultTargetUrl" value="/signined"></property>  
     </bean>  
 
-	<security:ldap-server url="${ldap.server}/${ldap.base}" manager-dn="${ldap.user}" manager-password="${ldap.password}" />
+	<!-- <security:ldap-server url="${ldap.server}/${ldap.base}" manager-dn="${ldap.user}" manager-password="${ldap.password}" /> -->
 	<!-- spring security LDAP 认证 -->
 	<security:authentication-manager erase-credentials="false" alias="authenticationManager">
-		<security:ldap-authentication-provider
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="test" authorities="ROLE_USER"/>
+			</security:user-service>
+		</security:authentication-provider>
+		<!-- <security:ldap-authentication-provider
 			user-search-filter="(|(mail={0})(mobile={0}))" >
 			<security:password-compare>
 				<security:password-encoder ref="passwordEncoder"></security:password-encoder>
 			</security:password-compare>
-		</security:ldap-authentication-provider>
+		</security:ldap-authentication-provider> -->
 	</security:authentication-manager>
 	
-	<bean id="rememberMeService" class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
+	<!-- <bean id="rememberMeService" class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
 		<property name="userDetailsService" ref="userService"/>
 		<property name="key" value="${rememberMeServices.key}" />
 		<property name="parameter" value="${rememberMeServices.parameter}"/>
@@ -60,18 +62,18 @@
         	</bean>
       </property>
       <property name="cookieName" value="${rememberMeServices.cookie.name}"></property>
-	</bean>
+	</bean> -->
 	
-	<bean id="passwordEncoder" class="com.ouer.im.config.MyPasswordEncoder">
-	</bean>
+	<!-- <bean id="passwordEncoder" class="com.ouer.im.config.MyPasswordEncoder">
+	</bean> -->
 	
 	<!-- 注意能够为authentication-manager 设置alias别名 -->
-	<security:authentication-manager alias="authenticationManager">
+<!-- 	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider user-service-ref="userDetailsService">
 			<security:password-encoder ref="passwordEncoder">
 				<security:salt-source user-property="username" />
 			</security:password-encoder>
 		</security:authentication-provider>
-	</security:authentication-manager>
+	</security:authentication-manager> -->
 	
 </beans>
