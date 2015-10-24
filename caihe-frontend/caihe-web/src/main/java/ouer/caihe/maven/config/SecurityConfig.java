@@ -10,5 +10,3 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 }
- 
-	

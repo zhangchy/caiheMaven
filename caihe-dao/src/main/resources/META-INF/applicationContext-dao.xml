@@ -12,9 +12,6 @@
 					  	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd" 
 	default-lazy-init="true" default-autowire="byName">
 
-	<context:component-scan base-package="ouer.caihe.maven" />
-	<context:property-placeholder />
-
 	<!-- Transaction manager for a single JDBC DataSource -->
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">  

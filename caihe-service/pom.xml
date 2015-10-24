@@ -17,7 +17,14 @@
 			<groupId>caihe.maven</groupId>
 			<artifactId>caihe-dao</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>caihe.maven</groupId>
+			<artifactId>caihe-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>caihe.maven</groupId>
+			<artifactId>caihe-util</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -30,5 +37,11 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
+		<!-- Security start -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+		<!-- Security end -->
 	</dependencies>
 </project>

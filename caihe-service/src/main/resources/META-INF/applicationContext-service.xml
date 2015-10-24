@@ -11,9 +11,6 @@
 						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 					  	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd" 
 	default-lazy-init="true">
-
-	<context:component-scan base-package="ouer.caihe.maven" />
-	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />

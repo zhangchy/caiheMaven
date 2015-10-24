@@ -13,9 +13,6 @@ public class EmbeddedServer {
         tomcat.setPort(8089);
         tomcat.setBaseDir("target/tomcat");
         final Context ctx = tomcat.addWebapp("", new File("src/main/webapp").getAbsolutePath());
-        System.out.println("==================================");
-        System.out.println(ctx.getPath());
-        System.out.println("==================================");
         tomcat.getConnector().setURIEncoding("UTF-8");
 
         //		final RedisSessionManager manager = new RedisSessionManager();

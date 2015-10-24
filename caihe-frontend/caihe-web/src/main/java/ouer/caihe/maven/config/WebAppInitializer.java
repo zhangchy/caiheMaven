@@ -6,7 +6,6 @@ package ouer.caihe.maven.config;
 import java.io.IOException;
 
 import javax.servlet.Filter;
-import javax.servlet.ServletRegistration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,13 +46,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         ShallowEtagHeaderFilter shallowEtagHeaderFilter = new ShallowEtagHeaderFilter();
 
         DelegatingFilterProxy springSecurityFilterChain = new DelegatingFilterProxy("springSecurityFilterChain");
-
         return new Filter[] { characterEncodingFilter, shallowEtagHeaderFilter, springSecurityFilterChain };
-    }
-
-    @Override
-    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setInitParameter("defaultHtmlEscape", "true");
     }
 
     public static class ConfigApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {

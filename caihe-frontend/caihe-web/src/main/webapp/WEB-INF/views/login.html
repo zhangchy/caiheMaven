@@ -1,9 +1,41 @@
 <html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script type="text/javascript" src="/resources/js/jquery/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript">
+			/* $(function(){
+				 $.ajax({
+		             type: "post",
+		             url: "test.json",
+		             data: {username:$("#username").val(), content:$("#content").val()},
+		             dataType: "json",
+		             success: function(data){
+		             }
+				 });
+			}); */
+			function test(){
+				$.ajax({
+		             type: "post",
+		             url: "test.json",
+		             data: {
+		            	 username:"test", 
+		            	 password:"test",
+		            	 remember_me:true
+		           	 },
+		             dataType: "json",
+		             success: function(data){
+		            	 
+		             }
+				 });
+			}
+		</script>
+	</head>
 	<body>
-		<form action="/login" style="text-align:center">
-			ÓÃ»§Ãû£º<input type="text" name="username" id="username"/>
-			ÃÜÂë£º<input type="password" name="password" id="password"/>		
-			<input type="submit" value="µÇÂ½"/>
+		<form action="/signin" style="text-align:center" method="post">
+			ç”¨æˆ·åï¼š<input type="text" name="username" id="username" value="test"/>
+			å¯†ç ï¼š<input type="password" name="password" id="password" value="test"/>	
+			<input type="hidden" name="remember_me" value="true"/>	
+			<input type="submit"  value="ç™»é™†"/>
 		</form>
 	</body>
 </html>
