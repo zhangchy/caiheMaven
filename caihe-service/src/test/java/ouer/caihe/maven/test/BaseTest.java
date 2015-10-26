@@ -15,14 +15,14 @@ import ouer.caihe.maven.config.ServiceConfig;
 @ContextConfiguration(classes = { ApplicationConfig.class, ServiceConfig.class})
 public abstract class BaseTest<T> {
 
-    protected T provider;
+    protected T service;
 
-    protected T getProvider() {
-        return provider;
+    protected T getService() {
+        return service;
     }
 
     @Autowired
-    protected void setProvider(T provider) {
-        this.provider = provider;
+    protected void setService(T service) {
+        this.service = service;
     }
 }

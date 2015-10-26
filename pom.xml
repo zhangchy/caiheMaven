@@ -21,6 +21,7 @@
 		<project.groupId>caihe.maven</project.groupId>
 		<slf4j.version>1.7.10</slf4j.version>
 		<logback.version>1.1.2</logback.version>
+		<ch.qos.logback-version>1.0.13</ch.qos.logback-version>
         <spring.version>4.0.7.RELEASE</spring.version>
         <springframework.mobile-version>1.1.3.RELEASE</springframework.mobile-version>
         <org.springframework-version>4.0.3.RELEASE</org.springframework-version>
@@ -238,7 +239,20 @@
 				<version>${slf4j.version}</version>
 			</dependency>
 			<!-- slf4j end -->
-			
+			<!-- log START -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${ch.qos.logback-version}</version>
+				<scope>${libScope}</scope>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${ch.qos.logback-version}</version>
+				<scope>${libScope}</scope>
+			</dependency>
+			<!-- log END -->
 			<!-- mysql start -->
 			<dependency>
 				<groupId>mysql</groupId>
