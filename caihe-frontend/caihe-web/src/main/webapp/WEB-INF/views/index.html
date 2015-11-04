@@ -1,1 +1,48 @@
-index
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script type="text/javascript" src="/resources/js/jquery/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				 $("#test").click(function(){
+					 $.ajax({
+			             type: "get",
+			             url: "/test1",
+			             data: {
+			            	 username:"a",
+			            	 password:"b"
+			           	 },
+			             dataType: "text",
+			             success: function(data){
+			            	 console.log("=========================");
+			            	 console.log(data);
+			             },
+			             error:function(data){
+			            	 console.log("errrrrrrrrrrrrrrrrrrrrrr");
+			            	 console.log(data);
+			             }
+					 });
+				 });
+				 
+			});
+			function test(){
+				$.ajax({
+		             type: "post",
+		             url: "test.json",
+		             data: {
+		            	 username:"test", 
+		            	 password:"test",
+		            	 remember_me:true
+		           	 },
+		             dataType: "json",
+		             success: function(data){
+		            	 
+		             }
+				 });
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="test" id="test"/>
+	</body>
+</html>

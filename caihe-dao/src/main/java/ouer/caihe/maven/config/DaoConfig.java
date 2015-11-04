@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ouer.caihe.maven.config;
 
 import javax.sql.DataSource;
