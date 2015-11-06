@@ -32,17 +32,22 @@
 		<security:intercept-url pattern="/signin_deny" access="permitAll" />
 		<security:intercept-url pattern="/**" access="isAuthenticated()" /> 
 		
+		<!-- 自定义授权 实现RBAC-->
+		<security:custom-filter ref="mySecurityInterceptorFilter" before="FILTER_SECURITY_INTERCEPTOR" /> 
+		 
 		<!-- session管理 -->
 		<security:session-management>
 		    <security:concurrency-control max-sessions="1" expired-url= "/login"/>
 		</security:session-management>
  	</security:http>
  	
-	<security:authentication-manager >
+	<security:authentication-manager alias="myAuthenticationManager">
 		<security:authentication-provider user-service-ref="userService">
 			<security:password-encoder ref="passwordEncoder"></security:password-encoder>
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	<!-- remember me-->
 	 <bean id="rememberMeService" class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
 		<property name="userDetailsService" ref="userService"/>
 		<property name="key" value="${rememberMeServices.key}" />

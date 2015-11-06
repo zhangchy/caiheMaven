@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ouer.caihe.maven.mapper.auth.RoleMapper">
+	<resultMap id="BaseResultMap" type="ouer.caihe.maven.auth.model.Role">
+		<id column="id" typeHandler="idHandler" />
+		<result column="rolename" jdbcType="VARCHAR" property="rolename" />
+	</resultMap>
+	<sql id="table_name">
+		auth_role
+	</sql>
+	<sql id="base_column">
+		(id,rolename)
+	</sql>
+	<!-- 添加一条角色记录 -->
+	<insert id="insertRole" parameterType="ouer.caihe.maven.auth.model.Role">
+		insert into
+		<include refid="table_name" />
+		<include refid="base_column" />
+		value(UUID(),#{rolename})
+	</insert>
+
+	<!-- 批量加入角色记录 -->
+	<insert id="insertRoleBatch" parameterType="java.util.List">
+		insert into
+		<include refid="table_name" />
+		<include refid="base_column" />
+		values
+		<foreach collection="roles" item="item" index="index"
+			separator="," close=";">
+			(UUID(),#{rolename})
+		</foreach>
+	</insert>
+	
+	<!-- 修改 -->
+	<update id="updateRole" parameterType="ouer.caihe.maven.auth.model.Role">
+		update <include refid="table_name" />
+		<set>
+			<if test="rolename != null">rolename = #{rolename,jdbcType=VARCHAR}</if>
+		</set>
+		where id = #{id,typeHandler=idHandler}
+	</update>
+	
+	<!-- 根据id删除组记录 -->
+	<delete id="deleteRoleById" parameterType="java.lang.String">
+		delete from
+		<include refid="table_name" />
+		where id = #{id,typeHandler=idHandler}
+	</delete>
+
+	<!-- 根据id批量删除组记录 -->
+	<delete id="deleteRoleBatch" parameterType="java.lang.List">
+		delete from
+		<include refid="table_name" />
+		where id in
+		(
+		<foreach collection="roleIds" item="item" index="index"
+			separator=",">
+			#{item,typeHandler=idHandler}
+		</foreach>
+		)
+	</delete>
+</mapper>

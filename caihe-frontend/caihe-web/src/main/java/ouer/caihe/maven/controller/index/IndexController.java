@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ouer.caihe.maven.model.User;
+import ouer.caihe.maven.auth.model.User;
 
 @Controller
 public class IndexController {
