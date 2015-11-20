@@ -18,6 +18,11 @@ public class IndexController {
     public String signinFail(Model model) {
         return "login";
     }
+	@RequestMapping(value = "/signin_deny")
+	@ResponseBody
+    public String signinDeny(Model model) {
+        return "deny";
+    }
 	
 	@RequestMapping(value="/test1")
 	@ResponseBody
