@@ -59,4 +59,25 @@ public interface GroupMapper {
 	 * @return
 	 */
 	Integer deleteGroupByParentId(@Param("parentId") String parentId);
+	
+	/**
+	 * 根据parent_id获取列表
+	 * @param parentId
+	 * @return
+	 */
+	List<Group> selectGroupsByParentId(@Param("parentId") String parentId);
+	
+	/**
+	 * 根据id获取
+	 * @param id
+	 * @return
+	 */
+	Group selectGroupById(@Param("id") String id);
+	
+	/**
+	 * 分页查询
+	 * @param page
+	 * @return
+	 */
+	/*List<Group> seleGroupsByPage(@Param ("page") Pageable page);*/
 }

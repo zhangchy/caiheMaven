@@ -6,6 +6,14 @@
 <configuration>
 
 	<mappers>
+		<mapper resource="ouer/caihe/maven/mapper/auth/GroupMapper.xml"/>
+		<mapper resource="ouer/caihe/maven/mapper/auth/GroupRoleMapper.xml"/>
+		<mapper resource="ouer/caihe/maven/mapper/auth/GroupUserMapper.xml"/>
+		<mapper resource="ouer/caihe/maven/mapper/auth/ResourceMapper.xml"/>
+		<mapper resource="ouer/caihe/maven/mapper/auth/ResourceRoleMapper.xml"/>
+		<mapper resource="ouer/caihe/maven/mapper/auth/RoleMapper.xml"/>
+		<mapper resource="ouer/caihe/maven/mapper/auth/UserMapper.xml"/>
+		<mapper resource="ouer/caihe/maven/mapper/auth/UserRoleMapper.xml"/>
 	</mappers>
 
 </configuration>

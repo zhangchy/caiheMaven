@@ -38,6 +38,10 @@
 		<!-- apache commons end -->
 		<!-- spring start -->
 		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 		</dependency>
@@ -108,8 +112,5 @@
 			<version>0.9.1.2</version>
 		</dependency>
 		<!-- mysql end -->
-
-		<!-- md5 Start -->
-		<!-- md5 End -->
 	</dependencies>
 </project>

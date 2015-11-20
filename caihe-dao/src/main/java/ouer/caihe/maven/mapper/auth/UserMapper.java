@@ -38,4 +38,18 @@ public interface UserMapper {
 	 * @return
 	 */
 	Integer deleteUserBatch(@Param("ids") List<String> ids);
+	
+	/**
+	 * 根据id获取
+	 * @param id
+	 * @return
+	 */
+	User selectUserById(@Param("id")String id);
+	
+	/**
+	 * 批量查询
+	 * @param ids
+	 * @return
+	 */
+	User selectUsersByIds(@Param("ids") List<String> ids);
 }

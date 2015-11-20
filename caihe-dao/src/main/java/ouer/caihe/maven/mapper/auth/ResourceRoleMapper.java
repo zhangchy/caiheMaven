@@ -33,4 +33,24 @@ public interface ResourceRoleMapper {
 	 * @return
 	 */
 	Integer deleteResourceRoleByGroupId(@Param("resourceId")String resourceId);
+	
+	/**
+	 * 根据resource_id获取列表
+	 * @param resourceId
+	 * @return
+	 */
+	List<ResourceRole> selectResourceRolesByResourceId(@Param("resourceId") String resourceId);
+	
+	/**
+	 * 根据user_id获取列表
+	 * @param roleId
+	 * @return
+	 */
+	List<ResourceRole> selectResourceRolesByRoleId(@Param("roleId") String roleId);
+	/**
+	 * 根据resource_id批量查询
+	 * @param resourceIds
+	 * @return
+	 */
+	List<ResourceRole> selectResourceRolesByResourceIds(@Param("resourceIds") List<String> resourceIds);
 }

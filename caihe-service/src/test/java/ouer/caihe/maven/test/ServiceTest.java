@@ -3,7 +3,7 @@ package ouer.caihe.maven.test;
 import org.junit.Test;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import ouer.caihe.maven.user.service.UserService;
+import ouer.caihe.maven.auth.service.UserService;
 
 public class ServiceTest extends BaseTest<UserService>{
 	@Test

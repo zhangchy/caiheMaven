@@ -33,4 +33,18 @@ public interface GroupUserMapper {
 	 * @return
 	 */
 	Integer deleteGroupUserByGroupId(@Param("groupId")String groupId);
+	
+	/**
+	 * 根据group_id获取列表
+	 * @param groupId
+	 * @return
+	 */
+	List<GroupUser> selectGroupUsersByGroupId(@Param("groupId") String groupId);
+	
+	/**
+	 * 根据user_id获取列表
+	 * @param userId
+	 * @return
+	 */
+	List<GroupUser> selectGroupUsersByRoleId(@Param("userId") String userId);
 }

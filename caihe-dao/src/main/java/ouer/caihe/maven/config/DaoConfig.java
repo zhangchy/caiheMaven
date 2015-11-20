@@ -54,6 +54,7 @@ public class DaoConfig {
         final SqlSessionFactoryBean fb = new SqlSessionFactoryBean();
         fb.setConfigLocation(mybatisMapperConfig);
         fb.setDataSource(dataSource);
+        fb.setTypeAliases(new Class<?>[] { IdTypeHandler.class});
         return fb.getObject();
     }
     

@@ -3,12 +3,13 @@ package ouer.caihe.maven.mapper.auth;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.data.domain.Pageable;
 
 import ouer.caihe.maven.auth.model.Role;
 
 public interface RoleMapper {
 	/**
-	 * ÐÂÔöÒ»Ìõ¼ÇÂ¼
+	 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
 	 * 
 	 * @param role
 	 * @return
@@ -16,7 +17,7 @@ public interface RoleMapper {
 	Integer insertRole(Role role);
 
 	/**
-	 * ÅúÁ¿²åÈë×é¼ÇÂ¼
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
 	 * 
 	 * @param roles
 	 * @return
@@ -24,7 +25,7 @@ public interface RoleMapper {
 	Integer insertRoleBatch(@Param("roles") List<Role> roles);
 
 	/**
-	 * ¸üÐÂ×é¼ÇÂ¼ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ï¢
 	 * 
 	 * @param role
 	 * @return
@@ -32,7 +33,7 @@ public interface RoleMapper {
 	Integer updateRole(Role role);
 
 	/**
-	 * ¸ù¾Ý×éidÉ¾³ý
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½idÉ¾ï¿½ï¿½
 	 * 
 	 * @param id
 	 * @return
@@ -40,10 +41,24 @@ public interface RoleMapper {
 	Integer deleteRoleById(@Param("id") String id);
 
 	/**
-	 * ÅúÁ¿É¾³ý
+	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 	 * 
 	 * @param ids
 	 * @return
 	 */
 	Integer deleteRoleBatch(@Param("ids") List<String> ids);
+	
+	/**
+	 * ï¿½ï¿½ï¿½idï¿½ï¿½È¡
+	 * @param id
+	 * @return
+	 */
+	Role selectRoleById(@Param("id")String id);
+	
+	/**
+	 * ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯
+	 * @param page
+	 * @return
+	 */
+	List<Role> selectRolesByPage(@Param("page") Pageable page);
 }

@@ -46,4 +46,24 @@ public interface ResourceMapper {
 	 * @return
 	 */
 	Integer deleteResourceByParentId(@Param("parentId") String parentId);
+	/**
+	 * 根据id获取
+	 * @param id
+	 * @return
+	 */
+	Resource selectResourceById(@Param("id")String id);
+	
+	/**
+	 * 根据parent_id,is_menu获取
+	 * @param parentId
+	 * @param isMenu
+	 * @return
+	 */
+	List<Resource> selectResourcesByParams(@Param("parentId") String parentId,@Param("is_menu") Boolean isMenu);
+	
+	/**
+	 * 获取所有的url不为空的菜单资源
+	 * @return
+	 */
+	List<Resource> selectAllResourcesUrlNotNull();
 }

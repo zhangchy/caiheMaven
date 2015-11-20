@@ -11,23 +11,24 @@ import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 
 import DesUtil.DesUtil;
 
 /**
- * 实体层的id主键使用String，db schema则使用long自增。本类则负责其间的可逆加密转换。
+ * 实体层的id主键使用String。本类则负责其间的可逆加密转换。
  * 
- * @author jamesp
+ * @author caihe
  */
 @Alias("idHandler")
 public final class IdTypeHandler extends BaseTypeHandler<String> {
-	@Value("${des.key}")
-	private static String desKey;
+	private static String desKey = "fxro45L7SYj6guWGV1csFi1imyV3dLeF";
 	
 	final static Logger log = LoggerFactory.getLogger(IdTypeHandler.class);
 	public static void main(String[] args) {
-		
+		IdTypeHandler.desKey="fxro45L7SYj6guWGV1csFi1imyV3dLeF";
+		System.out.println("==========================");
+		System.out.println(IdTypeHandler.encode("1"));
+		System.out.println("==========================");
 	}
 
 	/**

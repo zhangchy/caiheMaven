@@ -1,4 +1,4 @@
-package ouer.caihe.maven.user.service;
+package ouer.caihe.maven.auth.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
