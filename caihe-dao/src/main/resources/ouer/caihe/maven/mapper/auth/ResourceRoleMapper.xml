@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ouer.caihe.maven.mapper.auth.ResourceRoleMapper">
+	<resultMap id="BaseResultMap" type="ouer.caihe.maven.auth.model.ResourceRole">
+		<id column="id" typeHandler="idHandler" property="id"/>
+		<result column="resource_id" typeHandler="idHandler" jdbcType="VARCHAR" property="resourceId" />
+		<result column="role_id"  typeHandler="idHandler" jdbcType="VARCHAR" property="roleId" />
+	</resultMap>
+	<sql id="table_name">
+		auth_resource_role
+	</sql>
+	<sql id="base_column">
+		(id,resource_id,role_id)
+	</sql>
+	<!-- 添加一条用户角色对应记录 -->
+	<insert id="insertResourceRole" parameterType="ouer.caihe.maven.auth.model.ResourceRole">
+		insert into
+		<include refid="table_name" />
+		<include refid="base_column" />
+		value(UUID(),#{resourceId,typeHandler=idHandler},#{roleId,typeHandler=idHandler})
+	</insert>
+
+	<!-- 批量加入用户角色对应记录 -->
+	<insert id="insertResourceRoleBatch" parameterType="java.util.List">
+		insert into
+		<include refid="table_name" />
+		<include refid="base_column" />
+		values
+		<foreach collection="resourceRoles" item="item" index="index"
+			separator="," close=";">
+			(UUID(),#{resourceId,typeHandler=idHandler},#{roleId,typeHandler=idHandler})
+		</foreach>
+	</insert>
+	
+	<!-- 根据role_id批量删除用户角色记录 -->
+	<delete id="deleteResourceRoleByRoleId" parameterType="java.lang.String">
+		delete from
+		<include refid="table_name" />
+		where role_id = #{roleId,typeHandler=idHandler}
+	</delete>
+	
+	<!-- 根据group_id批量删除角色组记录 -->
+	<delete id="deleteResourceRoleByGroupId" parameterType="java.lang.String">
+		delete from
+		<include refid="table_name" />
+		where resource_id = #{resourceId,typeHandler=idHandler}
+	</delete>
+	
+	<!-- 根据resource_id查询 -->
+	<select id="selectResourceRolesByResourceId"  parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		where resource_id = #{resourceId,typeHandler=idHandler}
+	</select>
+	
+	<!-- 根据role_id查询 -->
+	<select id="selectResourceRolesByRoleId"  parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		where role_id = #{roleId,typeHandler=idHandler}
+	</select>
+	
+	<!-- 根据resource_id批量查询 -->
+	<select id="selectResourceRolesByResourceIds"  parameterType="java.util.List" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		where 1 =1 and resource_id in
+		(
+		<foreach collection="resourceIds" item="item" index="index"
+			separator=",">
+			#{item,typeHandler=idHandler}
+		</foreach>
+		)
+	</select>
+</mapper>

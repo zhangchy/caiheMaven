@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ouer.caihe.maven.mapper.auth.GroupRoleMapper">
+	<resultMap id="BaseResultMap" type="ouer.caihe.maven.auth.model.GroupRole">
+		<id column="id" typeHandler="idHandler" property="id"/>
+		<result column="group_id" jdbcType="VARCHAR"  typeHandler="idHandler" property="groupId" />
+		<result column="role_id" jdbcType="VARCHAR" typeHandler="idHandler"  property="roleId" />
+	</resultMap>
+	<sql id="table_name">
+		auth_group_role
+	</sql>
+	<sql id="base_column">
+		(id,group_id,role_id)
+	</sql>
+	<!-- 添加一条角色组对应记录 -->
+	<insert id="insertGroupRole" parameterType="ouer.caihe.maven.auth.model.GroupRole">
+		insert into
+		<include refid="table_name" />
+		<include refid="base_column" />
+		value(UUID(),#{groupId,typeHandler=idHandler},#{roleId,typeHandler=idHandler})
+	</insert>
+
+	<!-- 批量加入角色组对应记录 -->
+	<insert id="insertGroupRoleBatch" parameterType="java.util.List">
+		insert into
+		<include refid="table_name" />
+		<include refid="base_column" />
+		values
+		<foreach collection="groupRoles" item="item" index="index"
+			separator="," close=";">
+			(UUID(),#{groupId,typeHandler=idHandler},#{roleId,typeHandler=idHandler})
+		</foreach>
+	</insert>
+	
+	<!-- 根据role_id批量删除角色组记录 -->
+	<delete id="deleteGroupRoleByRoleId" parameterType="java.lang.String">
+		delete from
+		<include refid="table_name" />
+		where role_id = #{roleId,typeHandler=idHandler}
+	</delete>
+	
+	<!-- 根据group_id批量删除角色组记录 -->
+	<delete id="deleteGroupRoleByGroupId" parameterType="java.lang.String">
+		delete from
+		<include refid="table_name" />
+		where group_id = #{groupId,typeHandler=idHandler}
+	</delete>
+	
+	<!-- 根据group_id查询 -->
+	<select id="selectGroupRolesByGroupId" parameterType="java.lang.String" resultMap="BaseResultMap"> 
+		select * from
+		<include refid="table_name" />
+		where group_id = #{groupId,typeHandler=idHandler}
+	</select>
+	<!-- 根据role_id查询 -->
+	<select id="selectGroupRolesByRoleId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		where role_id = #{roleId,typeHandler=idHandler}
+	</select>
+</mapper>

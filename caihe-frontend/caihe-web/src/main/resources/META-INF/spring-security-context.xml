@@ -21,6 +21,7 @@
 			login-processing-url="${security.loginProcessingUrl}"
 			username-parameter="${login.username.parameter}" 
 			password-parameter="${login.password.parameter}"/>
+		<security:logout logout-url="/logout" delete-cookies="${rememberMeServices.cookie.name}" invalidate-session="true" logout-success-url="/login"/>
 			 <!-- <security:intercept-url pattern="/**"
 			access="isAuthenticated()" /> -->
 		<!-- 自定义授权 实现RBAC -->
