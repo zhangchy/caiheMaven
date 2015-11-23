@@ -11,6 +11,7 @@ import javax.crypto.spec.DESKeySpec;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+@SuppressWarnings("restriction")
 public class DesUtil{  
     public static byte[] desEncrypt(byte[] plainText,String desKey) throws Exception {  
         SecureRandom sr = new SecureRandom();  
@@ -54,7 +55,7 @@ public class DesUtil{
         return b.encode(s);  
     }  
   
-    public static byte[] base64Decode(String s) throws IOException {  
+	public static byte[] base64Decode(String s) throws IOException {  
         if (s == null)  
             return null;  
         BASE64Decoder decoder = new BASE64Decoder();  

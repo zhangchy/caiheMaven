@@ -311,22 +311,24 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-compiler-plugin</artifactId>
-		<version>2.3.2</version>
-		<configuration>
-			<source>${java-version}</source>
-			<target>${java-version}</target>
-			<encoding>UTF-8</encoding>
-		</configuration>
-	</plugin>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<profiles>
 		<!-- �?发环境，默认�?�? mvn package -P dev -->
 		<profile>
 			<id>caihe-dev</id>
 			<properties>
-				<profiles.active>dev</profiles.active>
+				<profiles.active>caihe-dev</profiles.active>
 				<!-- user.dir是取用户的当前工作目录 -->
 				<log.home.dir>${user.dir}/logs</log.home.dir>
 				<maven.test.skip>true</maven.test.skip>
@@ -340,7 +342,7 @@
 		<profile>
 			<id>caihe-production</id>
 			<properties>
-				<profiles.active>prod</profiles.active>
+				<profiles.active>caihe-production</profiles.active>
 				<log.home.dir>${user.dir}/logs</log.home.dir>
 				<libScope>compile</libScope>
 			</properties>
@@ -349,7 +351,7 @@
 		<profile>
 			<id>caihe-test</id>
 			<properties>
-				<profiles.active>test</profiles.active>
+				<profiles.active>caihe-test</profiles.active>
 				<log.home.dir>${user.dir}/logs</log.home.dir>
 				<libScope>compile</libScope>
 			</properties>
