@@ -1,4 +1,4 @@
-package DesUtil;
+package ouer.caihe.maven.encrypt;
 
 import java.io.IOException;
 import java.security.SecureRandom;

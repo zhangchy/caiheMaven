@@ -12,10 +12,10 @@ import org.apache.ibatis.type.JdbcType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import DesUtil.DesUtil;
+import ouer.caihe.maven.encrypt.DesUtil;
 
 /**
- * ÊµÌå²ãµÄidÖ÷¼üÊ¹ÓÃString¡£±¾ÀàÔò¸ºÔðÆä¼äµÄ¿ÉÄæ¼ÓÃÜ×ª»»¡£
+ * Êµï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Stringï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½
  * 
  * @author caihe
  */
@@ -32,7 +32,7 @@ public final class IdTypeHandler extends BaseTypeHandler<String> {
 	}
 
 	/**
-	 * Èç¹ûÊÇÌØÊâId(¿Õ»òÕßNULL)£¬ÔòÔ­Öµ·µ»Ø 
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Id(ï¿½Õ»ï¿½ï¿½ï¿½NULL)ï¿½ï¿½ï¿½ï¿½Ô­Öµï¿½ï¿½ï¿½ï¿½ 
 	 * @param s
 	 * @return
 	 */
@@ -51,7 +51,7 @@ public final class IdTypeHandler extends BaseTypeHandler<String> {
 	}
 
 	/**
-	 * Èç¹ûÊÇÌØÊâId(¿Õ»òÕßNULL)£¬ÔòÔ­Öµ·µ»Ø 
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Id(ï¿½Õ»ï¿½ï¿½ï¿½NULL)ï¿½ï¿½ï¿½ï¿½Ô­Öµï¿½ï¿½ï¿½ï¿½ 
 	 * @param s
 	 * @return
 	 */
@@ -69,25 +69,25 @@ public final class IdTypeHandler extends BaseTypeHandler<String> {
 		}
 	}
 
-	//¸³Öµ²»¿É¿ÕµÄ ²ÎÊý
+	//ï¿½ï¿½Öµï¿½ï¿½ï¿½É¿Õµï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void setNonNullParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType)
 			throws SQLException {
 		ps.setString(i, decode(parameter));
 	}
-	//»ñÈ¡¿É¿ÕµÄ ÄÚÈÝ
+	//ï¿½ï¿½È¡ï¿½É¿Õµï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public String getNullableResult(ResultSet rs, String columnName) throws SQLException {
 		final String l = rs.getString(columnName);
 		return encode(l);
 	}
-	//»ñÈ¡¿É¿ÕµÄ ÄÚÈÝ
+	//ï¿½ï¿½È¡ï¿½É¿Õµï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public String getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
 		final String s = rs.getString(columnIndex);
 		return encode(s);
 	}
-	//»ñÈ¡¿É¿ÕµÄ ÄÚÈÝ
+	//ï¿½ï¿½È¡ï¿½É¿Õµï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public String getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
 		final String s = cs.getString(columnIndex);

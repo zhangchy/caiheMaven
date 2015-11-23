@@ -10,7 +10,7 @@ public class EmbeddedServer {
 
     public static void main(String[] args) throws Exception {
         final Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8088);
+        tomcat.setPort(8899);
         tomcat.setBaseDir("target/tomcat");
         final Context ctx = tomcat.addWebapp("", new File("src/main/webapp").getAbsolutePath());
         tomcat.getConnector().setURIEncoding("UTF-8");
@@ -34,3 +34,4 @@ public class EmbeddedServer {
         tomcat.getServer().await();
     }
 }
+
