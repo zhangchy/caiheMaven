@@ -1,6 +1,7 @@
 package ouer.caihe.maven.server;
 
 import java.io.File;
+import java.util.Calendar;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
@@ -9,6 +10,7 @@ import org.apache.naming.resources.VirtualDirContext;
 public class EmbeddedServer {
 
     public static void main(String[] args) throws Exception {
+    	Calendar.getInstance().getTime();
         final Tomcat tomcat = new Tomcat();
         tomcat.setPort(8899);
         tomcat.setBaseDir("target/tomcat");

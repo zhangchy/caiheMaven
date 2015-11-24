@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html style="font-size: 100px;">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title data-layout-title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE"   data-th-text="#{appName}">快快开店</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" data-th-href="@{/resources/css/base.css}" />
+</head>
+
+<body>
+    <section data-layout-fragment="content" data-th-remove="tag"></section>
+    <div class="ajaxLoading">
+ 		<div class="cssload-container">
+			<div class="cssload-loading"><i></i><i></i></div>
+		</div>
+        
+		        
+    </div>
+    <script data-th-src="@{/resources/js/require/require.js}"></script>
+    <script data-th-src="@{/resources/js/require/config.js}"></script>
+    <script data-layout-fragment="postScript"></script>
+</body>
+
+</html>
