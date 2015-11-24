@@ -88,26 +88,30 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
 
 		return thymeleafViewResolver;
 	}
+
+	// ReloadableResourceBundleMessageSource加载时,默认使用DefaultResourceLoader,他会先判断资源path是否带有classpath:前缀,如果有,用
+	// ClassPathResource去加载资源文件,如果没有试着用文件协议的url去访问,再没有就在contextPath即WEB-INF下查找。
 	@Bean(name = "messageSource")
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename(MESSAGE_SOURCE);
-        messageSource.setCacheSeconds(msgSrcCacheSeconds);
-        return messageSource;
-    }
+	public MessageSource messageSource() {
+		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+		messageSource.setBasename(MESSAGE_SOURCE);
+		messageSource.setCacheSeconds(msgSrcCacheSeconds);
+		return messageSource;
+	}
+
 	@Bean
 	public LocaleResolver localeResolver() {
 		CookieLocaleResolver localeResolver = new CookieLocaleResolver();
 		localeResolver.setDefaultLocale(new Locale("zh"));
 		return localeResolver;
 	}
+
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
 		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
 		localeChangeInterceptor.setParamName("lang");
 		return localeChangeInterceptor;
 	}
-
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
