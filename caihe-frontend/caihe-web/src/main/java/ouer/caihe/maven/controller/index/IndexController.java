@@ -13,15 +13,16 @@ import ouer.caihe.maven.auth.model.User;
 
 @Controller
 public class IndexController {
+	@SuppressWarnings("unused")
 	@RequestMapping(value = "/signined")
     public String signined(Model model) {
 		model.addAttribute("test", "test");
 		User user = new User();
 		user.setAge(8);
 		model.addAttribute("user",user);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	    Calendar cal = Calendar.getInstance();
-	    model.addAttribute("today", dateFormat.format(cal.getTime()));
+	    model.addAttribute("today", cal.getTime());
         return "index";
     }
 	@RequestMapping(value = "/signin_fail")
@@ -38,6 +39,11 @@ public class IndexController {
 	@ResponseBody
 	public String test(@ModelAttribute User user){
 		System.out.println(user.getUsername());
+		return "test";
+	}
+	
+	@RequestMapping(value="/deny")
+	public String test(){
 		return "test";
 	}
 }

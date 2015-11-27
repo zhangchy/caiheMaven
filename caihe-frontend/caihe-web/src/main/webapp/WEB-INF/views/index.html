@@ -1,7 +1,8 @@
-<!-- xmlns:th �Ϳ�����th��ǩ��̬�滻����̬������ -->
+<!-- xmlns:th 就可以用th标签动态替换掉静态数据了 -->
 <html xmlns:th="http://www.thymeleaf.org"
 	data-layout-decorator="/layout/mainPage">
 	<head>
+		<meta charset="UTF-8"/>
 		<script type="text/javascript"
 			src="/resources/js/jquery/jquery-1.8.2.min.js"></script>
 		<script type="text/javascript">
@@ -9,15 +10,19 @@
 		</script>
 	</head>
 	<body>
-		<section data-layout-fragment="content" >
-			<!-- th��ǩ��Ӧ�� -->
+		<section data-layout-fragment="content">
+			<!-- th标签的应用 -->
 			<input type="text" name="userName" value="James Carrot" th:value="${test}" />
-			<div th:object="${user}">
-				<span th:text="*{age}"></span>
-				<span th:text="#{hello}"></span>
+			<div th:object="${user}" style="color:red;padding:20px;">
+				1.在模板中使用变量
+				*{name} 选择表达式th:text="*{age}"：<span style="color:black" th:text="*{age}"></span><br/><br/>
+				#{…}，i18n国际化th:text="#{hello}：<span style="color:black" th:text="#{hello}"></span><br/><br/>
 				<span th:text="${#dates}"></span>
+				date format start:<span th:text="${#dates.format(today, 'yyyy-MM-dd')}"></span>：date format end
 				<span th:text="${today}"></span>
 				<span th:text="${#session}"></span>
+				2.Thymeleaf提供的内置变量
+				
 			</div>
 		</section>
 	</body>
