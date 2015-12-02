@@ -11,7 +11,7 @@
 	<modules>
 		<module>caihe-dao</module>
 		<module>caihe-model</module>
-		<module>caihe-service</module>
+		<module>caihe-service</module> 
 		<module>caihe-util</module>
 		<module>caihe-frontend</module>
 	</modules>
@@ -323,38 +323,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<profiles>
-		<!-- �?发环境，默认�?�? mvn package -P dev -->
-		<profile>
-			<id>caihe-dev</id>
-			<properties>
-				<profiles.active>caihe-dev</profiles.active>
-				<!-- user.dir是取用户的当前工作目录 -->
-				<log.home.dir>${user.dir}/logs</log.home.dir>
-				<maven.test.skip>true</maven.test.skip>
-				<libScope>compile</libScope>
-			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-		<!-- 生产环境 -->
-		<profile>
-			<id>caihe-production</id>
-			<properties>
-				<profiles.active>caihe-production</profiles.active>
-				<log.home.dir>${user.dir}/logs</log.home.dir>
-				<libScope>compile</libScope>
-			</properties>
-		</profile>
-		<!-- 测试环境 -->
-		<profile>
-			<id>caihe-test</id>
-			<properties>
-				<profiles.active>caihe-test</profiles.active>
-				<log.home.dir>${user.dir}/logs</log.home.dir>
-				<libScope>compile</libScope>
-			</properties>
-		</profile>
-	</profiles>
 </project>
