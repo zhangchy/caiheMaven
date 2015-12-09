@@ -66,7 +66,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 						for(ResourceRole resourceRole:resourcesRoles){
 							if(String.valueOf(resource.getId()).equals(String.valueOf(resourceRole.getResourceId().toString()))){
 								// 通过资源名称来表示具体的权限 注意：必须"ROLE_"开头
-								ConfigAttribute configAttribute = new SecurityConfig(resourceRole.getRoleId());
+								ConfigAttribute configAttribute = new SecurityConfig(resourceRole.getResourceId());
 								configAttributes.add(configAttribute);
 							}
 						}

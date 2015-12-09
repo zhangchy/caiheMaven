@@ -34,16 +34,16 @@ public class IndexController {
     public String signinDeny(Model model) {
         return "deny";
     }
-	
-	@RequestMapping(value="/test1")
+	/*
+	@RequestMapping(value="/test")
 	@ResponseBody
 	public String test(@ModelAttribute User user){
 		System.out.println(user.getUsername());
 		return "test";
-	}
+	}*/
 	
 	@RequestMapping(value="/deny")
 	public String test(){
-		return "test";
+		return "deny";
 	}
 }

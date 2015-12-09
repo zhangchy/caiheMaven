@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import ouer.caihe.maven.auth.model.ResourceRole;
 import ouer.caihe.maven.auth.model.User;
 
 public interface UserMapper {
 	/**
-	 * 新增一条记录
+	 * insert
 	 * 
 	 * @param user
 	 * @return
@@ -16,7 +17,7 @@ public interface UserMapper {
 	Integer insertUser(User user);
 
 	/**
-	 * 更新组记录信息
+	 * update
 	 * 
 	 * @param user
 	 * @return
@@ -24,7 +25,7 @@ public interface UserMapper {
 	Integer updateUser(User user);
 
 	/**
-	 * 根据组id删除
+	 * delete
 	 * 
 	 * @param id
 	 * @return
@@ -32,7 +33,7 @@ public interface UserMapper {
 	Integer deleteUserById(@Param("id") String id);
 
 	/**
-	 * 批量删除
+	 * delete batch
 	 * 
 	 * @param ids
 	 * @return
@@ -40,16 +41,29 @@ public interface UserMapper {
 	Integer deleteUserBatch(@Param("ids") List<String> ids);
 	
 	/**
-	 * 根据id获取
+	 * select by id
 	 * @param id
 	 * @return
 	 */
 	User selectUserById(@Param("id")String id);
 	
 	/**
-	 * 批量查询
+	 * select batch
 	 * @param ids
 	 * @return
 	 */
 	User selectUsersByIds(@Param("ids") List<String> ids);
+	
+	/**
+	 * select by username
+	 * @param username
+	 * @return
+	 */
+	User selectUserByUsername(@Param("username")String username);
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	List<ResourceRole> selectResourceIdsByUserAuthorities(@Param("id")String id);
 }

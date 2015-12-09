@@ -13,11 +13,9 @@ public class ApplicationConfig {
 
 	private final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
-	/** ÏßÉÏ»·¾³µÄprofileÃû³Æ */
-	public static final String PROFILE_NAME_PROD = "prod";
-	public static final String PROFILE_NAME_PREPROD = "preprod";
-	public static final String PROFILE_NAME_TEST = "test";
-	public static final String PROFILE_NAME_DEV = "dev";
+	/** ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½profileï¿½ï¿½ï¿½ */
+	public static final String PROFILE_NAME_TEST = "caihe-test";
+	public static final String PROFILE_NAME_DEV = "caihe-dev";
 
 	/**
 	 * dev profile
@@ -37,24 +35,6 @@ public class ApplicationConfig {
 		final PropertySourcesPlaceholderConfigurer ppc = new PropertySourcesPlaceholderConfigurer();
 		ppc.setLocation(new ClassPathResource("env/config-test.properties"));
 		LOG.warn("env/config-test.properties loaded");
-		return ppc;
-	}
-
-	@Profile(PROFILE_NAME_PREPROD)
-	@Bean(name = "propertyPlaceholderConfigurer")
-	public PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurerPreProd() {
-		final PropertySourcesPlaceholderConfigurer ppc = new PropertySourcesPlaceholderConfigurer();
-		ppc.setLocation(new ClassPathResource("env/config-preprod.properties"));
-		LOG.warn("env/config-preprod.properties loaded");
-		return ppc;
-	}
-	
-	@Profile(PROFILE_NAME_PROD)
-	@Bean(name = "propertyPlaceholderConfigurer")
-	public PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurerProd() {
-		final PropertySourcesPlaceholderConfigurer ppc = new PropertySourcesPlaceholderConfigurer();
-		ppc.setLocation(new ClassPathResource("env/config-prod.properties"));
-		LOG.warn("env/config-prod.properties loaded");
 		return ppc;
 	}
 }
