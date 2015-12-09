@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50022
 File Encoding         : 65001
 
-Date: 2015-11-20 16:58:22
+Date: 2015-12-09 11:41:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -77,7 +77,7 @@ CREATE TABLE `auth_resource` (
 -- ----------------------------
 -- Records of auth_resource
 -- ----------------------------
-INSERT INTO `auth_resource` VALUES ('1', 'test', '/test1', '0', '-1', '0');
+INSERT INTO `auth_resource` VALUES ('1', 'test', '/test', '0', '-1', '0');
 
 -- ----------------------------
 -- Table structure for `auth_resource_role`
@@ -126,6 +126,8 @@ CREATE TABLE `auth_user` (
 -- ----------------------------
 -- Records of auth_user
 -- ----------------------------
+INSERT INTO `auth_user` VALUES ('1', 'test', 'test', '0', '2');
+INSERT INTO `auth_user` VALUES ('2', 'test1', 'test1', '0', '2');
 
 -- ----------------------------
 -- Table structure for `auth_user_role`
@@ -141,6 +143,7 @@ CREATE TABLE `auth_user_role` (
 -- ----------------------------
 -- Records of auth_user_role
 -- ----------------------------
+INSERT INTO `auth_user_role` VALUES ('1', '1', '2');
 
 -- ----------------------------
 -- Table structure for `persistent_logins`
@@ -158,4 +161,6 @@ CREATE TABLE `persistent_logins` (
 -- ----------------------------
 -- Records of persistent_logins
 -- ----------------------------
-INSERT INTO `persistent_logins` VALUES ('test', 'E3ZxroGLS0kzqnXNy4xIiw==', 'k55gsBhYhbH+ynQtZ4O4mQ==', '2015-11-19 14:10:49');
+INSERT INTO `persistent_logins` VALUES ('test1', 'do9a+2iiSTkTXk6T+d7wZA==', 'dgFwiwi1Pl1x03bqlXmuNw==', '2015-12-09 11:38:48');
+INSERT INTO `persistent_logins` VALUES ('test1', 't+Yhw80C/tvclCiDx22ilw==', 'HXygsYrC883NhfdWVnFglQ==', '2015-12-09 11:34:32');
+INSERT INTO `persistent_logins` VALUES ('test1', 'vV8CB74g/xdAew3Uj5RP/w==', 'paUBfO5EBX03xLtE5s2hgg==', '2015-12-09 11:35:10');
